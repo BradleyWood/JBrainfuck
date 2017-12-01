@@ -15,6 +15,10 @@ public class Brackets extends OpCode {
         visitor.visitLoop(this);
     }
 
+    public OpCode[] getOpCodes() {
+        return opCodes;
+    }
+
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder("[");
