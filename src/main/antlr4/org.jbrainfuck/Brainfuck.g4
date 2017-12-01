@@ -3,6 +3,7 @@ grammar Brainfuck;
 program
     :   command+
     ;
+
 command
     :   GT
     |   LT
@@ -29,4 +30,27 @@ RPAREN  :   ']';
 
 WS      :   [ \t\r\n\u000C]+ -> skip;
 
-WORDS   :   [a-zA-Z]-> skip;
+IGNORE  :   (
+                [a-zA-Z]
+                [0-9]
+                | '!'
+                | '@'
+                | '#'
+                | '$'
+                | '%'
+                | '^'
+                | '&'
+                | '*'
+                | '='
+                | '/'
+                | '\\'
+                | ';'
+                | '"'
+                | '\''
+                | ':'
+                | '{'
+                | '}'
+                | '|'
+                | '_'
+                | '?'
+            ) -> skip;
