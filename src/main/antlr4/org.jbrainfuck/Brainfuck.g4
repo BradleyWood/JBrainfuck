@@ -25,3 +25,8 @@ DOT     :   '.';
 COMMA   :   ',';
 LPAREN  :   '[';
 RPAREN  :   ']';
+
+
+WS      :   [ \t\r\n\u000C]+ -> skip;
+
+WORDS   :   [a-zA-Z]-> skip;
