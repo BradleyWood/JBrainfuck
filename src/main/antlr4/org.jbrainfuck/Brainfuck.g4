@@ -1,4 +1,4 @@
-grammar brainfuck;
+grammar Brainfuck;
 
 program
     :   command+
@@ -9,6 +9,7 @@ command
     |   ADD
     |   SUB
     |   DOT
+    |   COMMA
     |   brackets
     ;
 
@@ -21,5 +22,6 @@ LT      :   '<';
 ADD     :   '+';
 SUB     :   '-';
 DOT     :   '.';
+COMMA   :   ',';
 LPAREN  :   '[';
 RPAREN  :   ']';
