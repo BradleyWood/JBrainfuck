@@ -22,4 +22,9 @@ public class OpCode extends AST {
     public void accept(ProgramVisitor visitor) {
         visitor.visitOpcode(this);
     }
+
+    @Override
+    public String toString() {
+        return "" + cmd.ch;
+    }
 }
