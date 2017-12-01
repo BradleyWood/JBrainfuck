@@ -6,6 +6,8 @@ import org.jbrainfuck.program.Program;
 import org.jbrainfuck.program.ProgramVisitor;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.PrintStream;
 import java.util.Arrays;
 
 public class Interpreter implements ProgramVisitor {
@@ -15,6 +17,9 @@ public class Interpreter implements ProgramVisitor {
     private byte[] memory = new byte[4096];
     private int dataPointer = 0;
 
+    private InputStream in = System.in;
+    private PrintStream out = System.out;
+
     public Interpreter(Program program) {
         this.program = program;
     }
@@ -23,11 +28,19 @@ public class Interpreter implements ProgramVisitor {
         program.accept(this);
     }
 
+    public void setOut(PrintStream out) {
+        this.out = out;
+    }
+
+    public void setIn(InputStream in) {
+        this.in = in;
+    }
+
     @Override
     public void visitOpcode(OpCode opCode) {
         switch (opCode.getCmd()) {
             case OUTPUT:
-                System.out.print((char) getByte());
+                out.print((char) getByte());
                 break;
             case INPUT:
                 readByte();
@@ -61,7 +74,7 @@ public class Interpreter implements ProgramVisitor {
     private void readByte() {
         verifyDataPointer();
         try {
-            memory[dataPointer] = (byte) System.in.read();
+            memory[dataPointer] = (byte) in.read();
         } catch (IOException e) {
             e.printStackTrace();
         }
