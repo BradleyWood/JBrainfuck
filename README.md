@@ -3,7 +3,7 @@
 A Brainfuck interpreter for the jvm
 
 
-#Setup
+# Setup
 
 ```
 git clone https://github.com/BradleyWood/JBrainfuck.git
@@ -13,7 +13,7 @@ mvn install assembly:single
 
 Executable jar is saved in the target directory
 
-#Running
+# Running
 
 
 ```
