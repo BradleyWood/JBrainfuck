@@ -16,6 +16,11 @@ public class Application {
 
         BFParser parser = new BFParser(file);
         Program program = parser.parse();
+
+        if (program == null) {
+            return;
+        }
+
         System.out.println("-------Parsed Input-------");
         System.out.println(program);
         System.out.println("--------------------------");

@@ -2,6 +2,7 @@ package org.jbrainfuck.antlr;
 
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
+import org.antlr.v4.runtime.ConsoleErrorListener;
 import org.jbrainfuck.BrainfuckLexer;
 import org.jbrainfuck.BrainfuckParser;
 import org.jbrainfuck.antlr.visitor.BFFileVisitor;
@@ -29,9 +30,20 @@ public class BFParser {
         BrainfuckLexer lexer = new BrainfuckLexer(CharStreams.fromStream(inputStream));
         CommonTokenStream tokenStream = new CommonTokenStream(lexer);
         BrainfuckParser parser = new BrainfuckParser(tokenStream);
+        parser.removeErrorListener(ConsoleErrorListener.INSTANCE);
+
+        BFErrorListener errorListener = new BFErrorListener();
+        parser.addErrorListener(errorListener);
 
         BFFileVisitor bfFileVisitor = new BFFileVisitor();
 
-        return bfFileVisitor.visit(parser.program());
+        Program program = bfFileVisitor.visit(parser.program());
+
+        if (errorListener.getErrorCount() > 0) {
+            errorListener.getErrors().stream().forEach(System.err::println);
+            return null;
+        }
+
+        return program;
     }
 }
