@@ -2,11 +2,11 @@ package org.jbrainfuck.program;
 
 import java.util.Arrays;
 
-public class Brackets extends OpCode {
+public class Loop extends OpCode {
 
     private OpCode[] opCodes;
 
-    public Brackets(OpCode... opCodes) {
+    public Loop(OpCode... opCodes) {
         this.opCodes = opCodes;
     }
 

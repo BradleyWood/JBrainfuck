@@ -1,6 +1,6 @@
 package org.jbrainfuck.interpreter;
 
-import org.jbrainfuck.program.Brackets;
+import org.jbrainfuck.program.Loop;
 import org.jbrainfuck.program.OpCode;
 import org.jbrainfuck.program.Program;
 import org.jbrainfuck.program.ProgramVisitor;
@@ -61,7 +61,7 @@ public class Interpreter implements ProgramVisitor {
     }
 
     @Override
-    public void visitLoop(Brackets br) {
+    public void visitLoop(Loop br) {
         if (getByte() == 0) {
             return;
         }

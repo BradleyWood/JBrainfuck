@@ -4,6 +4,6 @@ public interface ProgramVisitor {
 
     void visitOpcode(OpCode opCode);
 
-    void visitLoop(Brackets br);
+    void visitLoop(Loop br);
 
 }
