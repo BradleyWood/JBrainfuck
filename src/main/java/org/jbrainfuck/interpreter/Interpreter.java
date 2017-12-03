@@ -14,14 +14,19 @@ public class Interpreter implements ProgramVisitor {
 
     private final Program program;
 
-    private byte[] memory = new byte[4096];
+    private final byte[] memory;
     private int dataPointer = 0;
 
     private InputStream in = System.in;
     private PrintStream out = System.out;
 
-    public Interpreter(Program program) {
+    public Interpreter(Program program, int maxMemory) {
         this.program = program;
+        memory = new byte[maxMemory];
+    }
+
+    public Interpreter(Program program) {
+        this(program, 4096);
     }
 
     public void run() {
