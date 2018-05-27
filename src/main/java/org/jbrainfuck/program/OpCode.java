@@ -6,7 +6,7 @@ public class OpCode extends AST {
 
     private Command cmd;
 
-    public OpCode(Command cmd) {
+    public OpCode(final Command cmd) {
         this.cmd = cmd;
     }
 
@@ -19,7 +19,7 @@ public class OpCode extends AST {
     }
 
     @Override
-    public void accept(ProgramVisitor visitor) {
+    public void accept(final ProgramVisitor visitor) {
         visitor.visitOpcode(this);
     }
 

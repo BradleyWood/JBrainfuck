@@ -6,12 +6,12 @@ public class Loop extends OpCode {
 
     private OpCode[] opCodes;
 
-    public Loop(OpCode... opCodes) {
+    public Loop(final OpCode... opCodes) {
         this.opCodes = opCodes;
     }
 
     @Override
-    public void accept(ProgramVisitor visitor) {
+    public void accept(final ProgramVisitor visitor) {
         visitor.visitLoop(this);
     }
 

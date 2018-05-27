@@ -20,12 +20,12 @@ public class Interpreter implements ProgramVisitor {
     private InputStream in = System.in;
     private PrintStream out = System.out;
 
-    public Interpreter(Program program, int maxMemory) {
+    public Interpreter(final Program program, final int maxMemory) {
         this.program = program;
         memory = new byte[maxMemory];
     }
 
-    public Interpreter(Program program) {
+    public Interpreter(final Program program) {
         this(program, 4096);
     }
 
@@ -33,16 +33,16 @@ public class Interpreter implements ProgramVisitor {
         program.accept(this);
     }
 
-    public void setOut(PrintStream out) {
+    public void setOut(final PrintStream out) {
         this.out = out;
     }
 
-    public void setIn(InputStream in) {
+    public void setIn(final InputStream in) {
         this.in = in;
     }
 
     @Override
-    public void visitOpcode(OpCode opCode) {
+    public void visitOpcode(final OpCode opCode) {
         switch (opCode.getCmd()) {
             case OUTPUT:
                 out.print((char) getByte());
@@ -66,7 +66,7 @@ public class Interpreter implements ProgramVisitor {
     }
 
     @Override
-    public void visitLoop(Loop br) {
+    public void visitLoop(final Loop br) {
         while (getByte() != 0) {
             Arrays.stream(br.getOpCodes()).forEach(op -> op.accept(this));
         }
@@ -76,7 +76,7 @@ public class Interpreter implements ProgramVisitor {
         verifyDataPointer();
         try {
             memory[dataPointer] = (byte) in.read();
-        } catch (IOException e) {
+        } catch (final IOException e) {
             e.printStackTrace();
         }
     }

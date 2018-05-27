@@ -6,11 +6,11 @@ public class Program extends AST {
 
     private final OpCode[] operations;
 
-    public Program(OpCode... operations) {
+    public Program(final OpCode... operations) {
         this.operations = operations;
     }
 
-    public void accept(ProgramVisitor visitor) {
+    public void accept(final ProgramVisitor visitor) {
         Arrays.stream(operations).forEach(opCode -> opCode.accept(visitor));
     }
 

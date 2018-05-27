@@ -11,8 +11,8 @@ public class LoopVisitor extends BrainfuckBaseVisitor<Loop> {
     }
 
     @Override
-    public Loop visitLoop(BrainfuckParser.LoopContext ctx) {
-        OpCode[] opCodes = new OpCode[ctx.command().size()];
+    public Loop visitLoop(final BrainfuckParser.LoopContext ctx) {
+        final OpCode[] opCodes = new OpCode[ctx.command().size()];
 
         for (int i = 0; i < ctx.command().size(); i++) {
             opCodes[i] = ctx.command(i).accept(OpCodeVisitor.INSTANCE);
@@ -20,5 +20,5 @@ public class LoopVisitor extends BrainfuckBaseVisitor<Loop> {
         return new Loop(opCodes);
     }
 
-    public static LoopVisitor INSTANCE = new LoopVisitor();
+    static final LoopVisitor INSTANCE = new LoopVisitor();
 }

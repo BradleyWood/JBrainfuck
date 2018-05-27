@@ -8,12 +8,12 @@ public enum Command {
     OUTPUT('.', "output the byte at the data pointer"),
     INPUT(',', "input one byte to the byte at the data pointer"),
     LPAREN('[', ""),
-    R_PAREN(']', "");
+    RPAREN(']', "");
 
-    public char ch;
-    public String desc;
+    public final char ch;
+    public final String desc;
 
-    Command(char ch, String desc) {
+    Command(final char ch, final String desc) {
         this.ch = ch;
         this.desc = desc;
     }

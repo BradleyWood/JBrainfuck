@@ -14,15 +14,15 @@ public class BFParser {
 
     private final InputStream inputStream;
 
-    public BFParser(InputStream inputStream) {
+    public BFParser(final InputStream inputStream) {
         this.inputStream = inputStream;
     }
 
-    public BFParser(File file) throws FileNotFoundException {
+    public BFParser(final File file) throws FileNotFoundException {
         this(new FileInputStream(file));
     }
 
-    public BFParser(String file) throws FileNotFoundException {
+    public BFParser(final String file) throws FileNotFoundException {
         this(new FileInputStream(file));
     }
 

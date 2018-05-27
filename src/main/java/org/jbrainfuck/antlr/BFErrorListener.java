@@ -11,7 +11,8 @@ public class BFErrorListener extends BaseErrorListener {
     private final LinkedList<String> errors = new LinkedList<>();
 
     @Override
-    public void syntaxError(Recognizer<?, ?> recognizer, Object offendingSymbol, int line, int charPositionInLine, String msg, RecognitionException e) {
+    public void syntaxError(final Recognizer<?, ?> recognizer, final Object offendingSymbol, final int line,
+                            final int charPositionInLine, final String msg, final RecognitionException e) {
         errors.add("syntax error at line " + line + ":" + charPositionInLine + " " + msg);
     }
 

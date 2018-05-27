@@ -11,7 +11,7 @@ public class OpCodeVisitor extends BrainfuckBaseVisitor<OpCode> {
     }
 
     @Override
-    public OpCode visitCommand(BrainfuckParser.CommandContext ctx) {
+    public OpCode visitCommand(final BrainfuckParser.CommandContext ctx) {
         OpCode opCode = null;
 
         if (ctx.loop() != null) {
@@ -39,5 +39,5 @@ public class OpCodeVisitor extends BrainfuckBaseVisitor<OpCode> {
         return opCode;
     }
 
-    public static OpCodeVisitor INSTANCE = new OpCodeVisitor();
+    static final OpCodeVisitor INSTANCE = new OpCodeVisitor();
 }

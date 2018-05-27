@@ -2,8 +2,8 @@ package org.jbrainfuck.program;
 
 public interface ProgramVisitor {
 
-    void visitOpcode(OpCode opCode);
+    void visitOpcode(final OpCode opCode);
 
-    void visitLoop(Loop br);
+    void visitLoop(final Loop br);
 
 }
