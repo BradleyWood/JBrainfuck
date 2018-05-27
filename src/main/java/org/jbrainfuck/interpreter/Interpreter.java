@@ -67,12 +67,8 @@ public class Interpreter implements ProgramVisitor {
 
     @Override
     public void visitLoop(Loop br) {
-        if (getByte() == 0) {
-            return;
-        }
-        Arrays.stream(br.getOpCodes()).forEach(op -> op.accept(this));
-        if (getByte() != 0) {
-            visitLoop(br);
+        while (getByte() != 0) {
+            Arrays.stream(br.getOpCodes()).forEach(op -> op.accept(this));
         }
     }
 
