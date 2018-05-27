@@ -11,10 +11,10 @@ command
     |   SUB
     |   DOT
     |   COMMA
-    |   brackets
+    |   loop
     ;
 
-brackets
+loop
     :   LPAREN command+ RPAREN
     ;
 

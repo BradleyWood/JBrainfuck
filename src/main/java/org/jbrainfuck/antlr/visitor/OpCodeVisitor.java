@@ -14,8 +14,8 @@ public class OpCodeVisitor extends BrainfuckBaseVisitor<OpCode> {
     public OpCode visitCommand(BrainfuckParser.CommandContext ctx) {
         OpCode opCode = null;
 
-        if (ctx.brackets() != null) {
-            opCode = ctx.brackets().accept(BracketsVisitor.INSTANCE);
+        if (ctx.loop() != null) {
+            opCode = ctx.loop().accept(LoopVisitor.INSTANCE);
         } else {
             if (ctx.ADD() != null) {
                 opCode = new OpCode(Command.INC);

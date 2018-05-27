@@ -5,13 +5,13 @@ import org.jbrainfuck.BrainfuckParser;
 import org.jbrainfuck.program.Loop;
 import org.jbrainfuck.program.OpCode;
 
-public class BracketsVisitor extends BrainfuckBaseVisitor<Loop> {
+public class LoopVisitor extends BrainfuckBaseVisitor<Loop> {
 
-    private BracketsVisitor() {
+    private LoopVisitor() {
     }
 
     @Override
-    public Loop visitBrackets(BrainfuckParser.BracketsContext ctx) {
+    public Loop visitLoop(BrainfuckParser.LoopContext ctx) {
         OpCode[] opCodes = new OpCode[ctx.command().size()];
 
         for (int i = 0; i < ctx.command().size(); i++) {
@@ -20,5 +20,5 @@ public class BracketsVisitor extends BrainfuckBaseVisitor<Loop> {
         return new Loop(opCodes);
     }
 
-    public static BracketsVisitor INSTANCE = new BracketsVisitor();
+    public static LoopVisitor INSTANCE = new LoopVisitor();
 }
